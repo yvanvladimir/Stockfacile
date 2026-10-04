@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFacile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <body>
+
+    <!-- Menu latéral -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>📦 StockFacile</h2>
+        </div>
+
+        <nav>
+            <a href="#" class="active" id="dashboardButton">🏠 Tableau de bord</a>
+            <a href="#" id="productsButton">📦 Produits</a>
+            <a href="#" id="sidebarAddButton">➕ Ajouter un produit</a>
+            <a href="#" id="alertsButton">⚠️ Alertes</a>
+        </nav>
+
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+
+        <header>
+            <div>
+                <h1>Tableau de bord</h1>
+                <p>Bienvenue sur votre espace de gestion de stock.</p>
+            </div>
+
+            <div class="user">
+                👤 Administrateur
+            </div>
+        </header>
+
+        <!-- Cartes statistiques -->
+        <section class="stats">
+
+            <div class="card">
+                <span>📦</span>
+                <div>
+                    <p>Produits</p>
+                    <h2 id="totalProducts">0</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>⚠️</span>
+                <div>
+                    <p>Stock faible</p>
+                    <h2 id="lowStock">0</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>🔴</span>
+                <div>
+                    <p>Ruptures</p>
+                    <h2 id="outOfStock">0</h2>
+                </div>
+            </div>
+
+            <div class="card">
+                <span>💰</span>
+                <div>
+                    <p>Valeur du stock</p>
+                    <h2 id="stockValue">0 FCFA</h2>
+                </div>
+            </div>
+        </section>
+
+            <!-- Liste des produits -->
+        <section class="products-section">
+
+            <div class="products-header">
+                <div>
+                    <h2>Produits en stock</h2>
+                    <p>Liste des produits enregistrés dans l'application.</p>
+                </div>
+
+                <button class="add-button">+ Ajouter un produit</button>
+            </div>
+
+            <!-- Outils de recherche et de filtrage -->
+            <div class="products-tools">
+
+            <div class="search-box">
+                <span>🔎</span>
+                <input
+            type="text"
+            id="searchProduct"
+            placeholder="Rechercher un produit..."
+             >
+            </div>
+
+    <select id="categoryFilter">
+        <option value="all">Toutes les catégories</option>
+        <option value="Informatique">Informatique</option>
+        <option value="Accessoires">Accessoires</option>
+    </select>
+
+    <select id="statusFilter">
+        <option value="all">Tous les états</option>
+        <option value="En stock">En stock</option>
+        <option value="Stock faible">Stock faible</option>
+        <option value="Rupture">Rupture</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="default">Trier par</option>
+      <option value="name-asc">Nom : A → Z</option>
+      <option value="name-desc">Nom : Z → A</option>
+      <option value="price-asc">Prix : croissant</option>
+      <option value="price-desc">Prix : décroissant</option>
+      <option value="quantity-asc">Quantité : croissante</option>
+      <option value="quantity-desc">Quantité : décroissante</option>
+    </select>
+
+</div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Catégorie</th>
+                        <th>Quantité</th>
+                        <th>Prix unitaire</th>
+                        <th>État</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="productTableBody">
+                    <tr>
+                        <td>Clavier Logitech</td>
+                        <td>Informatique</td>
+                        <td>12</td>
+                        <td>15 000 FCFA</td>
+                        <td><span class="status available">En stock</span></td>
+                        <td><button class="edit-button">✏️ Modifier</button>
+                            <button class="delete-button">🗑️ Supprimer</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Souris sans fil</td>
+                        <td>Informatique</td>
+                        <td>3</td>
+                        <td>8 500 FCFA</td>
+                        <td><span class="status low">Stock faible</span></td>
+                        <td><button class="edit-button">✏️ Modifier</button>
+                            <button class="delete-button">🗑️ Supprimer</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Écran Samsung 24"</td>
+                        <td>Informatique</td>
+                        <td>0</td>
+                        <td>95 000 FCFA</td>
+                        <td><span class="status out">Rupture</span></td>
+                        <td><button class="edit-button">✏️ Modifier</button>
+                            <button class="delete-button">🗑️ Supprimer</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Casque Bluetooth</td>
+                        <td>Accessoires</td>
+                        <td>8</td>
+                        <td>22 500 FCFA</td>
+                        <td><span class="status available">En stock</span></td>
+                        <td><button class="delete-button">🗑️ Supprimer</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p id="noProductMessage" class="no-product-message">
+    🔍 Aucun produit trouvé.
+</p>
+        </section>
+
+        <section class="alerts-section" id="alertsSection">
+
+    <div class="alerts-header">
+        <div>
+            <h2>⚠️ Alertes de stock</h2>
+            <p>Produits nécessitant votre attention.</p>
+        </div>
+    </div>
+
+    <div class="alerts-list" id="alertsList">
+        <!-- Les alertes seront ajoutées automatiquement ici -->
+    </div>
+
+        </section>
+
+    </main>
+
+<!-- Fenêtre d'ajout d'un produit -->
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>Ajouter un produit</h2>
+            <button class="close-button" id="closeModal">&times;</button>
+        </div>
+
+        <form id="productForm">
+
+            <div class="form-group">
+                <label for="productName">Nom du produit</label>
+                <input type="text" id="productName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productCategory">Catégorie</label>
+                <input type="text" id="productCategory" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productQuantity">Quantité</label>
+                <input type="number" id="productQuantity" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="productPrice">Prix unitaire (FCFA)</label>
+                <input type="number" id="productPrice" min="0" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="cancel-button" id="cancelButton">
+                    Annuler
+                </button>
+
+                <button type="submit" class="save-button">
+                    Ajouter le produit
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
